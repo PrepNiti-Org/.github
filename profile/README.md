@@ -1,58 +1,50 @@
-# Hi there, I'm Jayant! 👋
+# PrepNiti
 
-### 👨‍💻 Full Stack Developer | Golang & Next.js Enthusiast
-
-I am a passionate developer from India 🇮🇳 building scalable web applications. Currently, I am focusing on building anonymous community platforms for competitive exam aspirants.
-
-- 🔭 I’m currently building **[PrepNiti](https://github.com/PrepNiti-Org)** – A "LeetCode + Reddit" style platform for UPSC/JEE aspirants.
-- 💬 Ask me about **Go (Gin/GORM), PostgreSQL, and Modern React**.
-- 📫 How to reach me: **[jayantverma8533@gmail.com](mailto:YourEmail@gmail.com)**
-- ⚡ Fun fact: I run my backend servers on *Air* (literally and figuratively).
+An anonymous community and mock test preparation platform designed for competitive exam aspirants. PrepNiti bridges the gap between collaborative community discussions and structured practice workspaces.
 
 ---
 
-### 🛠️ Tech Stack
+## Architecture & Services
 
-<p align="left">
-  <a href="https://go.dev/" target="_blank" rel="noreferrer"> 
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/go/go-original.svg" alt="go" width="40" height="40"/> 
-  </a>
-  <a href="https://www.postgresql.org/" target="_blank" rel="noreferrer"> 
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" alt="postgresql" width="40" height="40"/> 
-  </a>
-  <a href="https://www.docker.com/" target="_blank" rel="noreferrer"> 
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" alt="docker" width="40" height="40"/> 
-  </a>
-  
-  <a href="https://nextjs.org/" target="_blank" rel="noreferrer"> 
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg" alt="nextjs" width="40" height="40"/> 
-  </a>
-  <a href="https://reactjs.org/" target="_blank" rel="noreferrer"> 
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" alt="react" width="40" height="40"/> 
-  </a>
-  <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"> 
-    <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="40" height="40"/> 
-  </a>
-  
-  <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> 
-    <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> 
-  </a>
-  <a href="https://postman.com" target="_blank" rel="noreferrer"> 
-    <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="postman" width="40" height="40"/> 
-  </a>
-</p>
+The platform is designed as a microservices architecture to segregate concerns between candidate-facing features, internal admin controls, and AI-driven document processing.
+
+*   **`prepniti-backend`**: Core REST API built in Go (Gin, GORM). It manages the database schemas (PostgreSQL) for users, community posts, tasks, and test attempt records. Implements JWT-based secure auth and routes for candidate portals.
+*   **`prepniti-admin-api`**: Separate administrative Go backend designed to handle privileged operations including mock compilations, metadata edits, and administrative audit logging.
+*   **`prepniti-question-extractor`**: A FastAPI-based Python service. It handles PDF uploads of competitive exam papers and uses Google's Gemini API to parse structure, options, explanations, and key metadata into formatted JSON data for mock test ingestion.
+*   **`prepniti-web`**: The candidate-facing Next.js frontend, styled with Tailwind CSS, utilizing React Query for state management and ApexCharts/Recharts for performance visualization.
+*   **`prepniti-admin`**: Next.js-based administrator console featuring drag-and-drop question builders, audit logs inspection, and mock test publishing pipelines.
 
 ---
 
-### 📊 GitHub Stats
+## Core Features
 
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=jayantverma&show_icons=true&theme=tokyonight&hide_border=true" alt="github stats" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=jayantverma&layout=compact&theme=tokyonight&hide_border=true" alt="top languages" />
-</div>
+### 1. Interactive Mock Test Workspace
+*   **Exam Simulation**: A custom client interface simulating actual computer-based test conditions.
+*   **Security Monitoring**: Built-in hook to detect tab-switching or focus loss, enforcing exam integrity with warning dialogs.
+*   **Performance Evaluation**: Auto-evaluates answer submissions, calculating percentages, tracking timing logs, and rendering detailed explanations.
+
+### 2. PrepCoach Performance Insights
+*   **Study Time Logging**: Visual tracker with category metrics and interactive heatmaps.
+*   **Mock Test Trends**: Visual graphs (Recharts) mapping percentage scores over successive mock attempts.
+*   **Personalized Recommendations**: Context-aware engine that analyzes historical mock data and logs to suggest immediate actions (e.g., "Resume Mock Tests" or "Focus on Accuracy").
+
+### 3. Anonymous Discussion Forums
+*   A Reddit-style community interface allowing aspirants to share interview experiences, mock results, and preparation strategies anonymously.
+
+### 4. Admin Control Center & Ledger
+*   **AI-Assisted Ingestion**: Upload mock test PDFs and automatically compile them into clean database schemas.
+*   **Immutable Operations Audit**: A secure log capturing administrative transactions (IP address, administrator user, specific actions, timestamps). Features interactive tables powered by TanStack Table for sorting and paginating logs.
 
 ---
 
-### 🚀 Latest Work
-* Building **PrepNiti Backend** (Go, Gin, Postgres)
-* Planning **PrepNiti Web** (Next.js, Tailwind)
+## Technology Stack
+
+*   **Backend Services**: Go (Gin, GORM), Python (FastAPI)
+*   **Frontend Interfaces**: TypeScript, Next.js (App Router), Tailwind CSS, TanStack Table (v8)
+*   **Database**: PostgreSQL, Supabase
+*   **Orchestration & DevOps**: Docker, Docker Compose, Multi-stage alpine builds
+
+---
+
+### Author & Maintainer
+*   **Jayant Verma** ([@jayantverma](https://github.com/jayantverma)) — [jayantverma8533@gmail.com](mailto:jayantverma8533@gmail.com)
